@@ -1,0 +1,26 @@
+{
+  "name": "oct-videos",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/raphaelcorreaoct/oct-videos.git",
+  "author": "Raphael Correa <raphael.correa@bennu.com.br>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16"
+  },
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon --watch 'src/' --exec 'ts-node src/index.ts' -e ts"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.41",
+    "concurrently": "^7.2.1",
+    "ts-node": "^10.8.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.3"
+  }
+}
