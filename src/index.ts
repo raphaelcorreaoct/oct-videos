@@ -1,12 +1,14 @@
 import express from "express";
+import { Router, Request, Response, Express } from "express";
 
-import { Router, Request, Response } from "express";
+import User from "./user";
 
-const app = express();
-
+const app: Express = express();
 const route = Router();
-
 app.use(express.json());
+
+//Routes
+app.use(User);
 
 route.get("/", (req: Request, res: Response) => {
   res.json({ message: "hello world with Typescript" });
