@@ -2,6 +2,7 @@ import express from "express";
 import { Router, Request, Response, Express } from "express";
 
 import User from "./user";
+import Auth from "./auth";
 
 const app: Express = express();
 const route = Router();
@@ -9,6 +10,7 @@ app.use(express.json());
 
 //Routes
 app.use(User);
+app.use(Auth);
 
 route.get("/", (req: Request, res: Response) => {
   res.json({ message: "hello world with Typescript" });
