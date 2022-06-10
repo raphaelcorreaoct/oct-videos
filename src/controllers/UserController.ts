@@ -1,11 +1,21 @@
 import { Request, Response } from "express";
 import { User } from "../types/User";
 import UserModel from "../database/UserModel";
+import bcrypt from "bcrypt";
+
+const attrReturns = [
+  "name",
+  "avatar",
+  "login",
+  "email",
+  "id",
+  "permission_level",
+];
 
 class UserController {
   async findAll(req: Request, res: Response) {
     try {
-      const users = await UserModel.findAll();
+      const users = await UserModel.findAll({ attributes: attrReturns });
       return users.length > 0
         ? res.status(200).json(users)
         : res.status(204).send();
@@ -16,7 +26,10 @@ class UserController {
   async findOne(req: Request, res: Response) {
     try {
       const { userId } = req.params;
-      const user = await UserModel.findOne({ where: { id: userId } });
+      const [user] = await UserModel.findAll({
+        where: { id: userId },
+        attributes: attrReturns,
+      });
       return user ? res.status(200).json(user) : res.status(204).send();
     } catch (error) {
       res.status(500).json(error);
@@ -25,6 +38,8 @@ class UserController {
   async create(req: Request, res: Response) {
     try {
       const data = req.body as User;
+      const salt = await bcrypt.genSalt(10);
+      const hashPassw = await bcrypt.hash(data.password, salt);
 
       const userExist = await UserModel.findOne({
         where: { email: data.email },
@@ -38,7 +53,7 @@ class UserController {
 
       await UserModel.create({
         email: data.email,
-        password: "12345",
+        password: hashPassw,
         permission_level: 1,
       } as User);
 
@@ -61,7 +76,7 @@ class UserController {
           avatar,
           login,
           email,
-        } as User,
+        },
         { where: { id: userId } }
       );
 
@@ -75,7 +90,8 @@ class UserController {
   }
   async delete(req: Request, res: Response) {
     try {
-      const { userId } = req.body;
+      const { userId } = req.params;
+      console.log(userId);
       await UserModel.destroy({ where: { id: userId } });
       return res.status(204).send();
     } catch (error) {
