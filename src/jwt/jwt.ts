@@ -1,7 +1,7 @@
 import { Response } from "express";
 import jwt from "jsonwebtoken";
 
-const JWTSecret = "Chablau!!";
+export const JWTSecret = "Chablau!!";
 
 /**
  *
