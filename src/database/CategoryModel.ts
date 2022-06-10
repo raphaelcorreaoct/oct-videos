@@ -1,7 +1,7 @@
-import DB from "./database";
-import Sequelize from "sequelize";
+import DB from './database';
+import Sequelize from 'sequelize';
 
-const CategoryModel = DB.define("OCT_Categories", {
+const CategoryModel = DB.define('OCT_Categories', {
   name: {
     type: Sequelize.STRING,
     allowNull: true,
