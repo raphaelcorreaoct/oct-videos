@@ -40,8 +40,8 @@ class AuthController {
       return res.status(500).send();
     }
   }
-  async refreshToken() {}
-  async logout() {}
+  async refreshToken() { return null }
+  async logout() {return null}
 }
 
 export default new AuthController();
