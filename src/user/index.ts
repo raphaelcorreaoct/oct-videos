@@ -1,13 +1,12 @@
 import express from "express";
-import { Request, Response } from "express";
+import UserController from "../controllers/UserController";
 
 const router = express.Router();
 
-//Pegar informações de um usuário
-router.get("/user", (req: Request, res: Response) => {
-  res.json({
-    message: "User",
-  });
-});
+router.get("/user/:userId", UserController.findOne);
+router.get("/user", UserController.findAll);
+router.post("/user", UserController.create);
+router.put("/user/:userId", UserController.update);
+router.delete("/user/:userId", UserController.delete);
 
 export default router;

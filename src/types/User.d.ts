@@ -2,7 +2,7 @@ export interface User {
   name?: string;
   password: string;
   avatar?: string;
-  login: string;
+  login?: string;
   email: string;
   id: string;
   permission_level: number;

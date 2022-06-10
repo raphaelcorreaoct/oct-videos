@@ -1,5 +1,7 @@
 import express from "express";
 import { Router, Request, Response, Express } from "express";
+import dotenv from "dotenv";
+dotenv.config();
 
 import User from "./user";
 import Auth from "./auth";
