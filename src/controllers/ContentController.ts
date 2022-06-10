@@ -2,8 +2,10 @@ import { Request, Response } from 'express';
 import ContentModel from '../database/ContentModel';
 import { VideoContent } from '../types/Content';
 import slugify from 'slugify';
+import multer from 'multer';
 
 class ContentController {
+  upload = multer({ dest: 'uploads/' });
   async create(req: Request, res: Response) {
     const { title, file, description, keywords } = req.body as VideoContent;
 
