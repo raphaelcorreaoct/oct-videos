@@ -5,6 +5,7 @@ dotenv.config();
 
 import User from './routes/user';
 import Auth from './routes/auth';
+import Content from './routes/content';
 
 const app: Express = express();
 const route = Router();
@@ -13,6 +14,7 @@ app.use(express.json());
 //Routes
 app.use(User);
 app.use(Auth);
+app.use(Content);
 
 route.get('/', (req: Request, res: Response) => {
   res.json({ message: 'hello world with Typescript' });

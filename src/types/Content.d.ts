@@ -11,6 +11,7 @@ export interface VideoContent {
   likes: number;
   unlike: number;
   keywords: string[];
+  slug: string;
 }
 
 export interface Comment {

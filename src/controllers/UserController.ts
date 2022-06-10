@@ -1,15 +1,15 @@
-import { Request, Response } from "express";
-import { User } from "../types/User";
-import UserModel from "../database/UserModel";
-import bcrypt from "bcrypt";
+import { Request, Response } from 'express';
+import { User } from '../types/User';
+import UserModel from '../database/UserModel';
+import bcrypt from 'bcrypt';
 
 const attrReturns = [
-  "name",
-  "avatar",
-  "login",
-  "email",
-  "id",
-  "permission_level",
+  'name',
+  'avatar',
+  'login',
+  'email',
+  'id',
+  'permission_level',
 ];
 
 class UserController {
@@ -57,7 +57,7 @@ class UserController {
         permission_level: 1,
       } as User);
 
-      res.json({ message: "User registered successfully!" });
+      res.json({ message: 'User registered successfully!' });
     } catch (error) {
       res.status(500);
       res.json({
@@ -77,10 +77,10 @@ class UserController {
           login,
           email,
         },
-        { where: { id: userId } }
+        { where: { id: userId } },
       );
 
-      return res.status(204).json({ message: "User registered successfully!" });
+      return res.status(204).json({ message: 'User registered successfully!' });
     } catch (error) {
       res.status(500);
       res.json({
@@ -91,11 +91,11 @@ class UserController {
   async delete(req: Request, res: Response) {
     try {
       const { userId } = req.params;
-      console.log(userId);
+
       await UserModel.destroy({ where: { id: userId } });
       return res.status(204).send();
     } catch (error) {
-      res.status(500).json({ error: "Internal server error" });
+      res.status(500).json({ error: 'Internal server error' });
     }
   }
 }

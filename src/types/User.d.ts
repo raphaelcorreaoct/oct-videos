@@ -13,4 +13,8 @@ export interface UserLogin {
   email: string;
 }
 
-export interface Follower extends User {}
+export interface Follower extends User {
+  approved: 'pendent' | 'approved' | 'not-approved';
+  expirade_subscription: Date;
+  sucription: Date;
+}

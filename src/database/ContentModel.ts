@@ -1,8 +1,8 @@
-import DB from "./database";
-import Sequelize from "sequelize";
-import Category from "./CategoryModel";
+import DB from './database';
+import Sequelize from 'sequelize';
+import Category from './CategoryModel';
 
-const ContentModel = DB.define("OCT_Content", {
+const ContentModel = DB.define('OCT_Content', {
   title: {
     type: Sequelize.STRING,
     allowNull: true,
@@ -24,6 +24,10 @@ const ContentModel = DB.define("OCT_Content", {
     allowNull: false,
   },
   keywords: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  slug: {
     type: Sequelize.STRING,
     allowNull: true,
   },
