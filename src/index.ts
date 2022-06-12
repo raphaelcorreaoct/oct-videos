@@ -1,5 +1,6 @@
 import express from 'express';
 import { Router, Request, Response, Express } from 'express';
+import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -10,6 +11,7 @@ import Content from './routes/content';
 const app: Express = express();
 const route = Router();
 app.use(express.json());
+app.use(cors());
 
 //Routes
 app.use(User);

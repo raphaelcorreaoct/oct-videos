@@ -5,20 +5,12 @@ import AuthController from '../../controllers/AuthController';
 const router = express.Router();
 
 // Verificar se o usuário tem o um token válido
-router.get('/auth', (req: Request, res: Response) => {
-  res.json({
-    message: 'User',
-  });
-});
+router.get('/auth', AuthController.refreshToken);
 
 // faz o login do usuário
 router.post('/auth', AuthController.login);
 
 // Faz o logout do usuário
-router.get('/auth/logout', (req: Request, res: Response) => {
-  res.json({
-    message: 'User',
-  });
-});
+router.get('/auth/logout', AuthController.logout);
 
 export default router;
