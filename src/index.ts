@@ -1,5 +1,7 @@
 import express from 'express';
 import { Router, Request, Response, Express } from 'express';
+import morgna from 'morgan';
+import helmet from 'helmet';
 import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -12,6 +14,8 @@ const app: Express = express();
 const route = Router();
 app.use(express.json());
 app.use(cors());
+app.use(helmet());
+app.use(morgna('dev'));
 
 //Routes
 app.use(User);

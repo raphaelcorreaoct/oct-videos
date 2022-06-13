@@ -73,7 +73,7 @@ class UserController {
       await UserModel.update(
         {
           name,
-          avatar,
+          avatar: 'https://picsum.photos/300/300',
           login,
           email,
         },
