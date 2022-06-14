@@ -9,6 +9,7 @@ dotenv.config();
 import User from './routes/user';
 import Auth from './routes/auth';
 import Content from './routes/content';
+import path from 'path';
 
 const app: Express = express();
 const route = Router();
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use(cors());
 app.use(helmet());
 app.use(morgna('dev'));
+app.use('/public', express.static(path.resolve(__dirname, '../public')));
 
 //Routes
 app.use(User);

@@ -1,8 +1,10 @@
 import { Request, Response } from 'express';
+import multer from 'multer';
 import { User } from '../types/User';
 import UserModel from '../database/UserModel';
 import bcrypt from 'bcrypt';
 
+const upload = multer({ dest: 'uploads/' });
 const attrReturns = [
   'name',
   'avatar',
@@ -67,13 +69,13 @@ class UserController {
   }
   async update(req: Request, res: Response) {
     try {
-      const { name, avatar, login, email } = req.body as User;
+      const { name, login, email } = req.body as User;
       const { userId } = req.params;
 
       await UserModel.update(
         {
           name,
-          avatar: 'https://picsum.photos/300/300',
+          avatar: 'http://localhost:3331/' + req.file?.path,
           login,
           email,
         },
